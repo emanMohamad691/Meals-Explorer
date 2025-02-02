@@ -1,0 +1,64 @@
+@if(clickBar){
+<div
+  (click)="clickLayout()"
+  [style.display]="this.dataService.isLayoutClicked ? 'none' : 'block'"
+  class="layout"
+></div>
+}
+<div class="home">
+  <div (click)="sendData()" class="icon">
+    <i class="fa-solid fa-bars-staggered"></i>
+  </div>
+  <div class="container">
+    <h1>Learn, Cook, Eat Your Food</h1>
+    <select
+      name="categories"
+      id="categories"
+      (change)="onCategoryChange($event)"
+    >
+      <option value="All">All</option>
+      @for (category of categories; track $index) {
+      <option value="{{ category.strCategory }}">
+        {{ category.strCategory }}
+      </option>
+      }
+    </select>
+
+    <ul>
+      <li
+        (click)="setActiveCategory('All')"
+        class="active-li"
+        [class.active-li]="activeCategory == 'All'"
+      >
+        all
+      </li>
+      @for (category of categories; track $index) {
+      <li
+        [class.active-li]="activeCategory == category.strCategory"
+        #myCategory
+        (click)="setActiveCategory(category.strCategory)"
+      >
+        {{ category.strCategory }}
+      </li>
+      }
+    </ul>
+
+    <div class="card-container">
+      @for (meal of meals; track meal.idMeal) {
+      <div class="card">
+        <div class="inner">
+          <img [src]="meal.strMealThumb" alt="" />
+          <div class="card-body">
+            <h3>{{ meal.strMeal.slice(0, 10) }}</h3>
+            <div class="country">
+              <i class="earth fa-solid fa-earth-americas"></i>
+              <p>{{ meal.strArea }}</p>
+            </div>
+            <button>View Recipe</button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

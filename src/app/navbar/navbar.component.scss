@@ -1,0 +1,113 @@
+// * variables
+$main-color: rgb(242, 151, 36);
+
+// * extend
+%common-image {
+  display: block;
+}
+
+%common-li {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+%common-hover-navbar {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+// * mixin
+@mixin common-image($width-image) {
+  width: $width-image;
+}
+@mixin common-li($bg, $border) {
+  background-color: $bg;
+  border: $border;
+}
+
+@mixin responsive($space) {
+  @media (min-width: $space) {
+    @content;
+  }
+}
+
+// * code
+
+.navbar {
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  background-color: rgb(249, 250, 251);
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  overflow: auto;
+  padding: 1.5rem 1.2rem 0 1.2rem;
+  @include responsive(768px) {
+    display: flex;
+  }
+  img {
+    @include common-image(100%);
+    @extend %common-image;
+  }
+
+  ul {
+    list-style: none;
+    .active {
+      @extend %common-li;
+      @include common-li(var(--main-color), none);
+      color: white;
+      box-shadow: 0 10px 15px -3px var(--main-color);
+      &:hover {
+        @extend %common-hover-navbar;
+        box-shadow: none;
+      }
+    }
+    li {
+      @extend %common-li;
+      @include common-li(transparent, 1px solid rgb(209, 213, 219));
+      border-radius: 10px;
+
+      &:hover {
+        @extend %common-hover-navbar;
+      }
+      font: {
+        family: var(--header-font-family);
+        weight: 600;
+        size: 1.2rem;
+      }
+
+      img {
+        @extend %common-image;
+        @include common-image(10%);
+        margin-right: 0.45rem;
+      }
+    }
+  }
+  button {
+    text-transform: capitalize;
+    background-color: transparent;
+    width: 90%;
+    border: 2px solid black;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-bottom: 2rem;
+    font-family: var(--header-font-family);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+}

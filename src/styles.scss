@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-font-family: "Pacifico", serif;
+  --header-font-family: "Comic Neue", serif;
+  --main-color: rgb(242, 151, 36);
+  --card-font-btn-color: rgb(33, 186, 117);
+  --body-bgcolor: #f4f2ee;
+}
+
+body {
+  font-family: var(--main-font-family);
+  background-color: var(--body-bgcolor);
+}
