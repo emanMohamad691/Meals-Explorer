@@ -22,3 +22,5 @@ Meals Explorer is a responsive **Angular** application that fetches meals from a
    git clone https://github.com/your-username/meals-explorer.git
    cd meals-explorer
 
+## screenshot
+![screencapture-meals-explorer-vercel-app-2025-02-02-19_17_53](https://github.com/user-attachments/assets/3e0c7f82-f6c0-4d66-897b-b88207cbfbe8)
